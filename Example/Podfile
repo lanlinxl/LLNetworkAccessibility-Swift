@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '11.0'
+
+target 'LLNetworkAccessibility-Swift_Example' do
+  pod 'LLNetworkAccessibility-Swift', :path => '../'
+
+  target 'LLNetworkAccessibility-Swift_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

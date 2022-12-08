@@ -47,7 +47,7 @@ class LLAccessibilityAlertController: UIViewController {
     
     private lazy var desImageView1: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "LLAccessibilityImage_1")
+        imageView.image = imageNamed(name: "LLAccessibilityImage1")
         return imageView
     }()
     
@@ -61,7 +61,7 @@ class LLAccessibilityAlertController: UIViewController {
     
     private lazy var desImageView2: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "LLAccessibilityImage_2")
+        imageView.image = imageNamed(name: "LLAccessibilityImage2")
         return imageView
     }()
     
@@ -131,3 +131,13 @@ class LLAccessibilityAlertController: UIViewController {
 }
 
 
+extension LLAccessibilityAlertController {
+    func imageNamed(name: String) -> UIImage? {
+        let currentBundle = Bundle(for: LLAccessibilityAlertController.self)
+        if let bundlePath = currentBundle.path(forResource: "LLNetworkAccessibility", ofType: "bundle") {
+            let image = UIImage(contentsOfFile: bundlePath + "/\(name).png")
+            return image
+        }
+        return nil
+    }
+}

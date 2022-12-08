@@ -15,27 +15,27 @@ private extension Notification.Name {
     static let LLNetworkStateChangedNotification = Notification.Name("LLNetworkAccessibilityChangedNotification")
 }
 
-class LLNetworkAccessibility: NSObject {
-    enum NetworkType: String  {
+public class LLNetworkAccessibility: NSObject {
+    public enum NetworkType: String  {
         case unknown
         case offline
         case wifi
         case cellular
     }
     
-    enum AuthType: String {
+    public enum AuthType: String {
         case checking
         case unknown
         case available
         case restricted
     }
     
-    enum AlertType: String  {
+    public enum AlertType: String  {
         case none
         case custom
     }
     
-    static let shared = LLNetworkAccessibility()
+    public static let shared = LLNetworkAccessibility()
     private var alertType: AlertType = .custom
     private let firstRunFlag = "LLNetworkAccessibilityFirstRunFlag"
     /// 上次保存的状态
@@ -51,7 +51,7 @@ class LLNetworkAccessibility: NSObject {
     private lazy var customAlertController = LLAccessibilityAlertController()
 
     /// 网络类型切换回调
-    var reachabilityUpdateCallBack: ((_ state: AuthType?) -> Void)?
+    public var reachabilityUpdateCallBack: ((_ state: AuthType?) -> Void)?
     
     private override init() {
         super.init()
@@ -62,12 +62,12 @@ class LLNetworkAccessibility: NSObject {
 //MARK: public method
 extension LLNetworkAccessibility{
     /// 开启检测
-    func start(){
+    public func start(){
         setupNetworkAccessibility()
     }
     
     /// 配置提示弹框
-    func configAlertInfo(type: AlertType , closeEnable: Bool = false , tintColor: UIColor = UIColor.red){
+    public func configAlertInfo(type: AlertType , closeEnable: Bool = false , tintColor: UIColor = UIColor.red){
         alertType = type
         switch type {
         case .custom:
@@ -80,7 +80,7 @@ extension LLNetworkAccessibility{
     }
     
     /// 停止检测
-    func stopAndClean(){
+    public func stopAndClean(){
         cellularData?.cellularDataRestrictionDidUpdateNotifier = nil
         cellularData = nil
         previousState = .checking
@@ -93,7 +93,7 @@ extension LLNetworkAccessibility{
     }
     
     /// 当前的授权状态
-    func getCurrentAuthState() -> AuthType{
+    public func getCurrentAuthState() -> AuthType{
         return previousState
     }
 }
