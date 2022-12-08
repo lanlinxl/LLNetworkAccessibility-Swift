@@ -200,7 +200,11 @@ extension LLNetworkAccessibility{
         guard let reachabilityRef = reachabilityRef else { return false}
         var flags = SCNetworkReachabilityFlags()
         if SCNetworkReachabilityGetFlags(reachabilityRef, &flags){
-            return (flags == .reachable)
+            if flags != .reachable {
+                return false
+            }else {
+                return true
+            }
         }
         return false
     }
