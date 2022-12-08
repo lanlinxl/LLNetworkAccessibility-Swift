@@ -51,7 +51,7 @@ public class LLNetworkAccessibility: NSObject {
     private lazy var customAlertController = LLAccessibilityAlertController()
 
     /// 网络类型切换回调
-    public var reachabilityUpdateCallBack: ((_ state: AuthType?) -> Void)?
+    public static var reachabilityUpdateCallBack: ((_ state: AuthType?) -> Void)?
     
     private override init() {
         super.init()
@@ -62,12 +62,31 @@ public class LLNetworkAccessibility: NSObject {
 //MARK: public method
 extension LLNetworkAccessibility{
     /// 开启检测
-    public func start(){
-        setupNetworkAccessibility()
+    public static func start(){
+        LLNetworkAccessibility.shared.setupNetworkAccessibility()
     }
     
-    /// 配置提示弹框
-    public func configAlertInfo(type: AlertType , closeEnable: Bool = false , tintColor: UIColor = UIColor.red){
+    /// 停止检测
+    public static func stop(){
+        LLNetworkAccessibility.shared.stopAndClean()
+    }
+    
+    /// 配置未授权的提示框
+    /// - Parameters:
+    ///  - type: none 不展示弹框 ， custom  展示自定义弹框
+    ///  - closeEnable: 点击背景是否可关闭弹框
+    ///  - tintColor: 设置按钮的文字颜色
+    public static func configAlertStyle(type: AlertType , closeEnable: Bool = false , tintColor: UIColor = UIColor.red){
+        LLNetworkAccessibility.shared.configAlert(type: type,closeEnable: closeEnable,tintColor: tintColor)
+    }
+    
+    /// 当前的授权状态
+    public static func getCurrentAuthState() -> AuthType{
+        return  LLNetworkAccessibility.shared.previousState
+    }
+    
+    // 配置提示弹框
+    private func configAlert(type: AlertType , closeEnable: Bool = false , tintColor: UIColor = UIColor.red){
         alertType = type
         switch type {
         case .custom:
@@ -78,9 +97,9 @@ extension LLNetworkAccessibility{
             isAutomaticallyAlert = false
         }
     }
-    
-    /// 停止检测
-    public func stopAndClean(){
+
+    // 停止检测
+    private func stopAndClean(){
         cellularData?.cellularDataRestrictionDidUpdateNotifier = nil
         cellularData = nil
         previousState = .checking
@@ -91,11 +110,7 @@ extension LLNetworkAccessibility{
         NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
         print("NetworkAccessibility 已清除")
     }
-    
-    /// 当前的授权状态
-    public func getCurrentAuthState() -> AuthType{
-        return previousState
-    }
+
 }
 
 
@@ -254,9 +269,9 @@ extension LLNetworkAccessibility{
         // 状态发生变化
         if state != previousState {
             previousState = state
+            LLNetworkAccessibility.reachabilityUpdateCallBack?(state)
+            NotificationCenter.default.post(name: .LLNetworkStateChangedNotification, object: nil)
         }
-        reachabilityUpdateCallBack?(state)
-        NotificationCenter.default.post(name: .LLNetworkStateChangedNotification, object: nil)
     }
     
     /// 延时调用

@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LLNetworkAccessibility-Swift'
-  s.version          = '1.0.1'
+  s.version          = '1.0.3'
   s.summary          = 'network authorization'
 
   s.description      = 'network authorization'

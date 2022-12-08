@@ -28,9 +28,9 @@ class ViewController: UIViewController {
         button.frame = CGRect(x: 150, y: label.frame.maxY + 30, width: 100, height: 30)
 
         
-        LLNetworkAccessibility.shared.start()
-        LLNetworkAccessibility.shared.configAlertInfo(type: .custom,closeEnable: false,tintColor: .red)
-        LLNetworkAccessibility.shared.reachabilityUpdateCallBack = { state in
+        LLNetworkAccessibility.start()
+        LLNetworkAccessibility.configAlertStyle(type: .custom,closeEnable: false,tintColor: .red)
+        LLNetworkAccessibility.reachabilityUpdateCallBack = { state in
             guard let state = state else { return }
             switch state {
             case .available:
