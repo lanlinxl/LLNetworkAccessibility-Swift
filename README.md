@@ -5,6 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/LLNetworkAccessibility-Swift.svg?style=flat)](https://cocoapods.org/pods/LLNetworkAccessibility-Swift)
 [![Platform](https://img.shields.io/cocoapods/p/LLNetworkAccessibility-Swift.svg?style=flat)](https://cocoapods.org/pods/LLNetworkAccessibility-Swift)
 
+Detects whether the APP has authorized cellular and wireless LAN, and can guide users to enable network Settings
+
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
