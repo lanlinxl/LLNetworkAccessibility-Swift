@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.author           = { 'lanlinxl' => 'lanlin0806@icloud.com' }
   s.source           = { :git => 'https://github.com/lanlinxl/LLNetworkAccessibility-Swift.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'LLNetworkAccessibility-Swift/Classes/**/*'
   s.resource = 'LLNetworkAccessibility-Swift/LLNetworkAccessibility.bundle'
