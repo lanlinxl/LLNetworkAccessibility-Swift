@@ -5,9 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/LLNetworkAccessibility-Swift.svg?style=flat)](https://cocoapods.org/pods/LLNetworkAccessibility-Swift)
 [![Platform](https://img.shields.io/cocoapods/p/LLNetworkAccessibility-Swift.svg?style=flat)](https://cocoapods.org/pods/LLNetworkAccessibility-Swift)
 
-## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
 
@@ -16,8 +14,10 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'LLNetworkAccessibility-Swift'
-
-
+}
+```
+## Example
+```ruby
 1. 开启检测
 LLNetworkAccessibility.start()
 
@@ -37,8 +37,8 @@ LLNetworkAccessibility.reachabilityUpdateCallBack = { state in
     default:
         break
     }
-}
 ```
+
 ## Sample graph
 ![wecom-temp-3333310-b849c7c289043303f0a7cf115841ad97](https://user-images.githubusercontent.com/38074234/206689390-d110724b-1c8c-4d39-a89c-cfb0b43acb83.gif)
 
@@ -46,7 +46,7 @@ LLNetworkAccessibility.reachabilityUpdateCallBack = { state in
 ```javascript
 var info = {
   nickName  : "lanlinxl",
-  address : "https://juejin.cn/post/7025864328301510687"
+  address : "https://juejin.cn/post/7175080567648550969"
 }
 ```
 
