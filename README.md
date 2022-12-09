@@ -14,7 +14,6 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'LLNetworkAccessibility-Swift'
-}
 ```
 ## Example
 ```ruby
@@ -37,6 +36,7 @@ LLNetworkAccessibility.reachabilityUpdateCallBack = { state in
     default:
         break
     }
+}
 ```
 
 ## Sample graph
