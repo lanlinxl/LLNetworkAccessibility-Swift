@@ -17,13 +17,13 @@ pod 'LLNetworkAccessibility-Swift'
 ```
 ## Example
 ```ruby
-1. 开启检测
+// 1. 开启检测
 LLNetworkAccessibility.start()
 
-2. 配置自定义弹框
+// 2. 配置自定义弹框
 LLNetworkAccessibility.configAlertStyle(type: .custom,closeEnable: false,tintColor: .red)
 
-3. 网络授权监听
+// 3. 网络授权监听
 LLNetworkAccessibility.reachabilityUpdateCallBack = { state in
     guard let state = state else { return }
     switch state {
